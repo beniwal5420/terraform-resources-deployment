@@ -117,20 +117,20 @@ variable "ssl_enforcement_enabled" {
 
 variable "ARM_SUBSCRIPTION_ID" {
   type    = string
-  default = "424bc852-c312-4205-b745-1b697eb8d364"
+  default = "xxxxxxxxxxxxxxxxxxxxxxxxx"
 }
 
 variable "ARM_CLIENT_ID" {
   type    = string
-  default = "79cc4425-38c8-4af2-ae1e-91af017020a5"
+  default = "xxxxxxxxxxxxxxxxxxxxxxxxx"
 }
 
 variable "ARM_CLIENT_SECRET" {
   type    = string
-  default = "Hz28Q~pvhD-Et3zMi6nk-NklvRzTfy9KmmhsUc.J"
+  default = "xxxxxxxxxxxxxxxxxxxxxxxxx"
 }
 
 variable "ARM_TENANT_ID" {
   type    = string
-  default = "55dde303-64d1-4ade-b1cb-76439af6e410"
+  default = "xxxxxxxxxxxxxxxxxxxxxxxxx"
 }
