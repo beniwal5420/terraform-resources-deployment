@@ -1,3 +1,14 @@
+resource "azurerm_availability_set" "n01656206_vmlinux_avs" {
+  name                = var.availability_set_name
+  location            = var.location
+  resource_group_name = var.resource_group_name
+
+  platform_fault_domain_count = 2
+  platform_update_domain_count = 2
+
+  tags = var.tags
+}
+
 resource "azurerm_network_interface" "linux_nic" {
   for_each = toset(var.linux_vm_names)
   name                = "nic-${each.key}"
@@ -20,6 +31,7 @@ resource "azurerm_public_ip" "linux_pip" {
   location            = var.location
   resource_group_name = var.resource_group_name
   allocation_method   = "Static"
+  domain_name_label   = "${var.student_number}-c-vm${each.key}"
   tags                = var.tags
 }
 
@@ -35,6 +47,7 @@ resource "azurerm_linux_virtual_machine" "linux_vm" {
   location            = var.location
   resource_group_name = var.resource_group_name
   network_interface_ids = [azurerm_network_interface.linux_nic[each.key].id]
+  availability_set_id = azurerm_availability_set.n01656206_vmlinux_avs.id
   size                = var.linux_vm_size
   admin_username      = var.admin_username
   admin_ssh_key {
@@ -55,6 +68,7 @@ resource "azurerm_linux_virtual_machine" "linux_vm" {
     storage_account_uri = var.storage_account_uri
   }
 
+  depends_on = [azurerm_availability_set.n01656206_vmlinux_avs]
 
   tags = var.tags
 }

@@ -11,7 +11,7 @@ output "windows_private_ip_addresses" {
 }
 
 output "windows_public_ip_addresses" {
-  value = azurerm_public_ip.public_ip[*].ip_address
+  value = [for i in range(var.windows_vm_count) : azurerm_public_ip.public_ip[i].ip_address]
 }
 
 output "windows_vm_public_ip_address_debug" {

@@ -1,0 +1,11 @@
+[linux]
+n01656206-c-vmlinux-vm1.canadacentral.cloudapp.azure.com
+n01656206-c-vmlinux-vm2.canadacentral.cloudapp.azure.com
+n01656206-c-vmlinux-vm3.canadacentral.cloudapp.azure.com
+
+[os:children]
+linux
+
+[linux:vars]
+ansible_user=n01656206
+ansible_connection=ssh

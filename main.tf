@@ -64,13 +64,22 @@ locals {
   windows_avs_name = "windows-avs-${var.student_number}"
 }
 
-
 module "loadbalancer" {
-  source                    = "./modules/load-balancer-6206"
-   resource_group_name       = module.resource_group.resource_group_name
-  location                  = var.location
+  source = "./modules/load-balancer-6206"
+
+  location            = var.location
+  resource_group_name = module.resource_group.resource_group_name
   tags                      = var.tags
-  depends_on                = [module.vmlinux]
+  loadbalancer_name = "n01656206-loadbalancer"
+  allocation_method = "Static"
+
+  loadbalancer_backend_pool_association = {
+    count     = length(module.vmlinux.vm_hostnames)
+    hostnames = values(module.vmlinux.vm_hostnames)
+    nic_ids   = values(module.vmlinux.nic_uris)
+  }
+
+  loadbalancer-rules = var.loadbalancer-rules
 }
 
 module "datadisk" {
@@ -95,4 +104,3 @@ module "database" {
   ssl_enforcement_enabled = var.ssl_enforcement_enabled
   depends_on              = [module.common]
 }
-

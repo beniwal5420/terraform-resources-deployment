@@ -13,3 +13,22 @@ variable "tags" {
   type        = map(string)
 }
 
+variable "loadbalancer_name" {
+  type        = string
+  description = "Name of the load balancer"
+}
+
+variable "allocation_method" {
+  type        = string
+  description = "Allocation method for the public IP address"
+}
+
+variable "loadbalancer_backend_pool_association" {
+  type        = any
+  description = "Contains information about the NIC and load balancer's backend_pool association"
+}
+
+variable "loadbalancer-rules" {
+  type        = map(string)
+  description = "Contains information about the firewall rules for load balancer"
+}

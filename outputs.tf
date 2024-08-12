@@ -54,6 +54,10 @@ output "load_balancer_name" {
   value = module.loadbalancer.load_balancer_name
 }
 
+output "loadbalancer_fqdn" {
+  value = module.loadbalancer.loadbalancer_fqdn
+}
+
 output "linux_vm_uris" {
   value = module.vmlinux.linux_vm_uris
 }

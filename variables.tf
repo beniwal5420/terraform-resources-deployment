@@ -115,22 +115,32 @@ variable "ssl_enforcement_enabled" {
   default     = true
 }
 
+variable "loadbalancer-rules" {
+  type = map(string)
+  default = {
+    name          = "loadbalancer-rules"
+    protocol      = "Tcp"
+    frontend_port = "80"
+    backend_port  = "80"
+  }
+}
+
 variable "ARM_SUBSCRIPTION_ID" {
   type    = string
-  default = "xxxxxxxxxxxxxxxxxxxxxxxxx"
+  default = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 }
 
 variable "ARM_CLIENT_ID" {
   type    = string
-  default = "xxxxxxxxxxxxxxxxxxxxxxxxx"
+  default = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 }
 
 variable "ARM_CLIENT_SECRET" {
   type    = string
-  default = "xxxxxxxxxxxxxxxxxxxxxxxxx"
+  default = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 }
 
 variable "ARM_TENANT_ID" {
   type    = string
-  default = "xxxxxxxxxxxxxxxxxxxxxxxxx"
+  default = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 }

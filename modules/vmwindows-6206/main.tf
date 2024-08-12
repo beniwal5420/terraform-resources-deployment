@@ -19,6 +19,8 @@ resource "azurerm_network_interface" "windows_nic" {
   }
 
   tags = var.tags
+
+  depends_on = [azurerm_public_ip.public_ip]
 }
 
 
@@ -28,7 +30,7 @@ resource "azurerm_public_ip" "public_ip" {
   name                = "${var.student_number}-win-pip-${count.index}"
   location            = var.location
   resource_group_name = var.resource_group_name
-  allocation_method   = "Dynamic"
+  allocation_method   = "Static"
   domain_name_label   = "${var.student_number}-win-${count.index}"
 
   tags = var.tags
